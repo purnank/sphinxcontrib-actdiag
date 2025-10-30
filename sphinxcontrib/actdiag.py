@@ -16,9 +16,9 @@ import os
 import re
 import posixpath
 import traceback
-import pkg_resources
 from collections import namedtuple
 from docutils import nodes
+from importlib import metadata
 from sphinx import addnodes
 from sphinx.util import logging
 from sphinx.util.osutil import ensuredir
@@ -323,7 +323,7 @@ def setup(app):
     app.connect("doctree-resolved", on_doctree_resolved)
 
     return {
-        'version': pkg_resources.require('actdiag')[0].version,
+        'version': metadata.version('actdiag'),
         'parallel_read_safe': True,
         'parallel_write_safe': True,
     }
